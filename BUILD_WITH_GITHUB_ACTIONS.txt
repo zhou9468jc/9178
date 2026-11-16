@@ -1,0 +1,18 @@
+不安装 Android Studio 的构建方法（使用 GitHub Actions 云端构建）
+
+1. 在 GitHub 创建一个新的空仓库。
+2. 解压本项目 ZIP。
+3. 将解压后的项目内所有文件和文件夹上传到仓库根目录。
+   必须包含隐藏目录 `.github/workflows/build.yml`。
+4. 提交（Commit）文件。工作流会自动开始构建。
+5. 打开仓库的 Actions 页面，进入 `Build Key Attestation APK` 任务。
+6. 等待任务完成，在页面底部 Artifacts 下载 `HONOR-KeyAttestation-debug-APK`。
+7. 解压下载的 artifact，得到 `app-debug.apk`。
+
+也可以在 Actions 页面手动运行 `Build Key Attestation APK`。
+
+说明：
+- 构建在 GitHub 提供的临时云端环境完成，不需要本机 Android Studio、JDK 或 Android SDK。
+- 仓库需要允许 GitHub Actions 运行。
+- 生成的是 debug APK，安装时手机可能要求允许该来源安装应用。
+- APK 的测试行为与 README 中说明一致：创建一把临时 Android Keystore 密钥并在结束时删除；并非严格只读。
